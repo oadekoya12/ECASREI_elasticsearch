@@ -7,6 +7,8 @@ ADD ./config/users /usr/share/elasticsearch/config/users
 ADD ./config/users_roles /usr/share/elasticsearch/config/users_roles
 
 RUN yum update -y && yum install -y dos2unix
+RUN mkdir -p ~/tmp && curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C ~/tmp &&\
+ mv ~/tmp/eksctl /usr/local/bin && rm -rvf ~/tmp
 WORKDIR /
 
 EXPOSE 9200 9300
