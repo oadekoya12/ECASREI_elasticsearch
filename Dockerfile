@@ -6,10 +6,11 @@ ADD ./config/roles.yml /usr/share/elasticsearch/config/roles.yml
 ADD ./config/users /usr/share/elasticsearch/config/users
 ADD ./config/users_roles /usr/share/elasticsearch/config/users_roles
 
+RUN yum install -y dos2unix
 WORKDIR /
 
 EXPOSE 9200 9300
 
 COPY ./system/local/script.sh /script.sh
-# RUN dos2unix /script.sh
+RUN dos2unix /script.sh
 ENTRYPOINT  ["sh","/script.sh"]
