@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  esearch:
+    container_name: elastics
+    build:
+      context: .
+    volumes:
+      - ./data:/usr/share/elasticsearch/data
+      - ./log:/var/log
+      # - ./config:/usr/share/elasticsearch/config
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    extra_hosts:
+      - "hostaccess:10.27.15.146"
